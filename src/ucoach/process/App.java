@@ -15,7 +15,7 @@ public class App
 	public static void main(String[] args) throws IllegalArgumentException, IOException, URISyntaxException
   {
     String protocol = "http://";
-    String portValue = "6000";
+    String portValue = "5001";
     if (String.valueOf(System.getenv("PORT")) != "null"){
       portValue = String.valueOf(System.getenv("PORT"));
     }
@@ -25,7 +25,7 @@ public class App
       hostname = "localhost";
     }
 
-    URI BASE_URI = new URI(protocol + hostname + port + "data/");
+    URI BASE_URI = new URI(protocol + hostname + port + "process/");
 
     JdkHttpServerFactory.createHttpServer(BASE_URI, createApp());
     System.out.println("Server started on " + BASE_URI + "\n[kill the process to exit]");

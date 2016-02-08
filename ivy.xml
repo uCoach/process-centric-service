@@ -63,5 +63,7 @@
         <artifact name="jackson-jaxrs-base" type="jar"/>
     </dependency>
     <dependency org="org.glassfish.jersey.media" name="jersey-media-json-jackson" rev="2.11"/>
+    
+    <dependency org="org.twitter4j" name="twitter4j-core" rev="4.0.2"/>
   </dependencies>
 </ivy-module>

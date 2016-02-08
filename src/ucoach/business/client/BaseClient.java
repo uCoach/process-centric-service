@@ -17,7 +17,7 @@ import ucoach.util.*;
 public class BaseClient {
 	
 	protected JsonParser jsonParser = new JsonParser();
-	protected String baseUrl = "http://192.168.0.102:5700";
+	protected String baseUrl = "http://192.168.0.102:5700/business";
 	protected transient WebTarget baseTarget;
 	protected String mediaType = MediaType.APPLICATION_JSON;
 
@@ -33,13 +33,15 @@ public class BaseClient {
 	/**
 	 * Perform GET request
 	 * @param target
+	 * @param userToken
 	 * @return
 	 */
-	protected Response getRequest(WebTarget target) {
+	protected Response getRequest(WebTarget target, String userToken) {
 		
 		// Build request
 		Builder builder = target.request().accept(mediaType);
 		Authorization.authorizeRequest(builder);
+		builder.header("User-Authorization", userToken);
 
 		// GET request
 		return builder.get();		
@@ -49,13 +51,15 @@ public class BaseClient {
 	 * Perform POST request
 	 * @param target
 	 * @param body
+	 * @param userToken
 	 * @return
 	 */
-	protected Response postRequest(WebTarget target, String body) {
+	protected Response postRequest(WebTarget target, String body, String userToken) {
 
 		// Build request
 		Builder builder = target.request().accept(mediaType);
 		Authorization.authorizeRequest(builder);
+		builder.header("User-Authorization", userToken);
 
 		// GET request
 		return builder.post(Entity.entity(body, mediaType));

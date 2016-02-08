@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-    <project name="uCoach-external-data-service" default="run" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+    <project name="uCoach-business-logic-service" default="run" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
         <property name="ivy.install.version" value="2.4.0-rc1" />
         <property name="ivy.jar.dir" value="${basedir}/ivy" />
         <property name="ivy.jar.file" value="${ivy.jar.dir}/ivy.jar" />
@@ -73,8 +73,8 @@
         </target>
 	
     	<target name="run" depends="install">
-            <echo message="run ucoach.data.App in ${build.dir}" />
-            <java classname="ucoach.data.App" classpath="${build.dir}" fork="true">
+            <echo message="run ucoach.process.App in ${build.dir}" />
+            <java classname="ucoach.process.App" classpath="${build.dir}" fork="true">
                 <arg value="$JAVA_OPTS  -cp" />
                 <classpath>
                     <path location="build" />
