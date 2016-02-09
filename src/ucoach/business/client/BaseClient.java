@@ -17,7 +17,7 @@ import ucoach.util.*;
 public class BaseClient {
 	
 	protected JsonParser jsonParser = new JsonParser();
-	protected String baseUrl = "http://192.168.0.102:5700/business";
+	protected String baseUrl = "https://ucoach-business-logic-service.herokuapp.com/business";
 	protected transient WebTarget baseTarget;
 	protected String mediaType = MediaType.APPLICATION_JSON;
 
@@ -73,7 +73,7 @@ public class BaseClient {
 	protected void parseResponseStatus(Response response) throws Exception {
 		// Parse status
 		int status = response.getStatus();
-		if (!(status == 200 || status == 201 || status == 204)) {
+		if (!(status == 200 || status == 201 || status == 202 || status == 204)) {
 			System.out.println("External Error: response returned " + status);
 			System.out.println(response.readEntity(String.class));
 			throw new Exception("External Error: response returned " + status);

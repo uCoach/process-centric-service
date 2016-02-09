@@ -49,7 +49,14 @@ public class HealthMeasureController {
 
 		// #2 CHECK IF SOME GOALS HAVE BEEN ACHIEVED
 		GoalClient goalClient = new GoalClient();
+		
 		JSONArray goals = goalClient.checkGoals(userToken, new Date());
+		if (goals == null) {
+			json.put("status", "200")
+			.put("message", "")
+			.put("achievedGoals", "[]");
+			return Response.status(200).entity(json.toString()).build();
+		}
 
 		// #3 SEND TWEET IF ACHIEVED
 		JSONArray achievedGoals = filterByAchieved(goals);
@@ -63,9 +70,9 @@ public class HealthMeasureController {
 		json.put("achievedGoals", achievedGoals.toString());
 		json.put("message", message);
 
-		return Response.status(200).entity(json).build();
+		return Response.status(200).entity(json.toString()).build();
 	}
-	
+
 	/**
 	 * 
 	 * @param goals
@@ -109,7 +116,7 @@ public class HealthMeasureController {
 			return "";
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param userToken

@@ -35,7 +35,7 @@ public class GoalClient extends BaseClient {
 			return new JSONArray(response.readEntity(String.class));
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("External error: " + e.getMessage());
 			return null;
 		}		
 	}
