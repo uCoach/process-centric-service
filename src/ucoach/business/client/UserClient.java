@@ -35,4 +35,25 @@ public class UserClient extends BaseClient {
 			return null;
 		}	
 	}
+	
+	/**
+	 * 
+	 * @param userToken
+	 * @return
+	 */
+	public JSONObject newUser(String userData) {
+		
+		// Build target URL and send GET request
+		Response response = postRequest(baseTarget, userData, null);
+		
+		// Parse response
+		try {
+			String responseString = response.readEntity(String.class);
+			return new JSONObject(responseString);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}	
+	}
 }

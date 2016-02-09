@@ -34,7 +34,7 @@ public class HealthMeasureController {
 		JSONObject json = new JSONObject();
 		
 		String userToken = headers.getHeaderString("User-Authorization");
-		if(!Authorization.validateRequest(headers) || (userToken == "" || userToken == null)){
+		if (!Authorization.validateRequest(headers) || (userToken == "" || userToken == null)) {
 			json.put("status", "401").put("message", "Unauthorize");
 			return Response.status(401).entity(json.toString()).build();
 		}
@@ -67,7 +67,7 @@ public class HealthMeasureController {
 
 		// #5 RETURN LIST OF ACHIEVED GOALS
 		json.put("status", 200);
-		json.put("achievedGoals", achievedGoals.toString());
+		json.put("achievedGoals", achievedGoals);
 		json.put("message", message);
 
 		return Response.status(200).entity(json.toString()).build();
@@ -89,7 +89,7 @@ public class HealthMeasureController {
 			
 			try {
 				String achieved = parser.getElement("achieved");
-				if (achieved == "1")
+				if (achieved.equals("1"))
 					filtered.put(goals.get(i));
 
 			} catch (Exception e) {
@@ -131,9 +131,9 @@ public class HealthMeasureController {
 		
 		String tweet = "@" + username + " Good job!! You achieved your goals!";
 		try {
-			TwitterClient.sendTweet(tweet);
+			new TwitterClient().sendTweet(tweet);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 }

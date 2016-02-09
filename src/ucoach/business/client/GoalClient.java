@@ -31,6 +31,7 @@ public class GoalClient extends BaseClient {
 
 		// Parse response
 		try {
+			
 			parseResponseStatus(response);
 			return new JSONArray(response.readEntity(String.class));
 

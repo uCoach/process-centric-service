@@ -59,7 +59,9 @@ public class BaseClient {
 		// Build request
 		Builder builder = target.request().accept(mediaType);
 		Authorization.authorizeRequest(builder);
-		builder.header("User-Authorization", userToken);
+		
+		if (userToken != null)
+			builder.header("User-Authorization", userToken);
 
 		// GET request
 		return builder.post(Entity.entity(body, mediaType));
