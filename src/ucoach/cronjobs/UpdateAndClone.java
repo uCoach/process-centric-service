@@ -14,7 +14,7 @@ public class UpdateAndClone {
 	
 	public static void main(String args[]) throws Exception{
 		
-
+		/*
 		SimpleDateFormat dateFormatGmt = new SimpleDateFormat("yyyy-MMM-dd HH:mm:ss");
 		dateFormatGmt.setTimeZone(TimeZone.getTimeZone("CET"));
 		
@@ -25,12 +25,12 @@ public class UpdateAndClone {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("HH");
 		
 		System.out.println(dateFormat.format(g));
-		
-		System.out.println("Cron Job has being called");
+		*/
+		System.out.println("\n\nCron Job has being called");
 		ArrayList<String> users = new ArrayList<String>();
 		GoalClient goalsClient = new GoalClient();
 		
-		//users.add("59d4acc18ccb00a4f89e39079850525a61e742f871273e59fe3239014e404eb8");
+		users.add("56bd661627e235655e8521be8da75bf56314d12847fc7e81dce43c674151a90b");
 		
 		for(String userToken : users){
 			//Take the goals for each user from Yesterday

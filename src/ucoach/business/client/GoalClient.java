@@ -64,26 +64,5 @@ public class GoalClient extends BaseClient {
 		}		
 	}
 	
-	/**
-	 * 
-	 * @param userToken
-	 * @param date
-	 * @return
-	 */
-	public JSONArray cloneGoals(String userToken) {
-
-		// Build target URL and send GET request
-		baseTarget.path("clone");
-		Response response = getRequest(baseTarget, userToken);
-
-		// Parse response
-		try {
-			parseResponseStatus(response);
-			return new JSONArray(response.readEntity(String.class));
-
-		} catch (Exception e) {
-			System.out.println("External error: " + e.getMessage());
-			return null;
-		}		
-	}
+	
 }
